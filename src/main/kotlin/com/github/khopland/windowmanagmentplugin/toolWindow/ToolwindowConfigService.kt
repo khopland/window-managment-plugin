@@ -13,8 +13,7 @@ import com.intellij.openapi.wm.ToolWindowManager
 
 data class ToolWindowInfo(
     var id: String = "",
-    var anchor: String = "",       // ToolWindowAnchor.name()
-    var available: Boolean = false,
+    var anchor: String = "",
     var visible: Boolean = false,
     var showButton: Boolean = false,
 )
@@ -51,7 +50,6 @@ class ToolwindowConfigService : PersistentStateComponent<ToolwindowState> {
                 ToolWindowInfo(
                     id = id,
                     anchor = anchor.displayName,
-                    available = tw.isAvailable,
                     visible = tw.isVisible,
                     showButton = tw.isShowStripeButton,
                 )
@@ -74,7 +72,6 @@ class ToolwindowConfigService : PersistentStateComponent<ToolwindowState> {
                 thisLogger().warn("Failed to set anchor for tool window ${info.id}: ${e.message}")
             }
 
-            tw.setAvailable(info.available) {}
             if (info.visible) {
                 tw.show {}
             } else {

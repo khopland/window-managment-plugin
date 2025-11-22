@@ -8,11 +8,11 @@ import com.intellij.openapi.actionSystem.Presentation
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
-class StripeActionsTest : BasePlatformTestCase() {
+class ToolwindowActionsTest : BasePlatformTestCase() {
 
     fun testSaveToolwindowsStateActionExists() {
         val actionManager = ActionManager.getInstance()
-        val action = actionManager.getAction("WindowManagement.saveToolwindow")
+        val action = actionManager.getAction("WindowManagement.SaveToolwindow")
 
         assertNotNull("SaveToolwindowsState action should be registered", action)
         assertTrue("Action should be instance of SaveToolwindowsState", action is SaveToolwindowsState)
@@ -20,10 +20,10 @@ class StripeActionsTest : BasePlatformTestCase() {
 
     fun testRestoreStripeActionExists() {
         val actionManager = ActionManager.getInstance()
-        val action = actionManager.getAction("WindowManagement.RestoreStripe")
+        val action = actionManager.getAction("WindowManagement.RestoreToolwindow")
 
         assertNotNull("RestoreStripeAction should be registered", action)
-        assertTrue("Action should be instance of RestoreStripeAction", action is RestoreStripeAction)
+        assertTrue("Action should be instance of RestoreStripeAction", action is RestoreToolwindowAction)
     }
 
     fun testSaveToolwindowsStateActionPerformed() {
@@ -83,7 +83,7 @@ class StripeActionsTest : BasePlatformTestCase() {
     }
 
     fun testRestoreStripeActionPerformed() {
-        val action = RestoreStripeAction()
+        val action = RestoreToolwindowAction()
         val service = ToolwindowConfigService.getInstance()
 
         // First capture some state
@@ -112,7 +112,7 @@ class StripeActionsTest : BasePlatformTestCase() {
     }
 
     fun testRestoreStripeActionWithNullProject() {
-        val action = RestoreStripeAction()
+        val action = RestoreToolwindowAction()
 
         // Create action event without project (empty data context)
         val dataContext = SimpleDataContext.builder().build()
@@ -135,7 +135,7 @@ class StripeActionsTest : BasePlatformTestCase() {
     }
 
     fun testRestoreStripeActionWithEmptyState() {
-        val action = RestoreStripeAction()
+        val action = RestoreToolwindowAction()
         val service = ToolwindowConfigService.getInstance()
 
         // Clear state
@@ -165,7 +165,7 @@ class StripeActionsTest : BasePlatformTestCase() {
 
     fun testActionText() {
         val saveAction = SaveToolwindowsState()
-        val restoreAction = RestoreStripeAction()
+        val restoreAction = RestoreToolwindowAction()
 
         assertEquals("Save Toolwindows", saveAction.templateText)
         assertEquals("Restore Toolwindows", restoreAction.templateText)

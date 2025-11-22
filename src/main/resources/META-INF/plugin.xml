@@ -8,14 +8,14 @@
 
     <resource-bundle>messages.MyBundle</resource-bundle>
     <actions>
-        <action id="WindowManagement.saveToolwindow"
+        <action id="WindowManagement.SaveToolwindow"
                 class="com.github.khopland.windowmanagmentplugin.toolWindow.SaveToolwindowsState"
-                text="Save Tool Window Layout">
+                text="Save Toolwindow Position">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
-        <action id="WindowManagement.RestoreStripe" 
-                class="com.github.khopland.windowmanagmentplugin.toolWindow.RestoreStripeAction"
-                text="Restore Tool Window Layout">
+        <action id="WindowManagement.RestoreToolwindow"
+                class="com.github.khopland.windowmanagmentplugin.toolWindow.RestoreToolwindowAction"
+                text="Restore Toolwindow Position">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
     </actions>
